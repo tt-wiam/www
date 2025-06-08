@@ -13,6 +13,7 @@ $config = [
     ],
     'components' => [
         'request' => [
+            'enableCsrfValidation' => false,
             'enableCsrfCookie' => false,
             'enableCookieValidation' => false,
             'parsers' => [
