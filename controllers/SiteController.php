@@ -16,11 +16,21 @@ class SiteController extends Controller
     public function behaviors(): array
     {
         return [
+            'cors' => [
+                'class' => Cors::class,
+                'cors' => [
+                    'Origin' => ['http://localhost:8080'],
+                    'Access-Control-Request-Method' => ['GET', 'POST', 'OPTIONS'],
+                    'Access-Control-Request-Headers' => ['*'],
+                    'Access-Control-Allow-Credentials' => true,
+                    'Access-Control-Max-Age' => 86400,
+                ]
+            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'requests' => ['POST', 'OPTIONS'],
-                    'processor' => ['GET', 'OPTIONS'],
+                    'requests' => ['POST'],
+                    'processor' => ['GET'],
                 ],
             ],
         ];
